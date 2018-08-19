@@ -1,7 +1,7 @@
 package com.klb.commons;
 
 /**
- * Created by klb on 19.08.18.
+ * DLA KAZDEJ KLASY KTORĄ TESTUJĘ POWINNA BYC JEDNA KLASA JUNIT (TESTUJACA)
  */
 public class ArrayHelper {
 
@@ -19,6 +19,23 @@ public class ArrayHelper {
         for(int k = i; k <= j; k++) {
             array[k] = el;
         }
+
+    }
+
+    //do klasy ArrayHelperTests trzeba dodac swiemetody - jedna do testu gdy sa poprawne argumenty, druga do testu rzucania wyjatka
+
+    public static  Double[] sumReverse(Double []arr1, Double []arr2) throws RangeArrayException{
+        //sprawdzamy czy argumenty sa poprawne
+        if(arr1.length != arr2.length) {
+            throw new RangeArrayException();
+        }
+
+        Double []result = new Double[arr1.length];   //tablica z sumami
+        for(int i = arr1.length - 1; i >= 0; i--) {
+            result[result.length -  (i +1)] = arr1[i] + arr2[i];
+        }
+
+        return result;
 
     }
 
