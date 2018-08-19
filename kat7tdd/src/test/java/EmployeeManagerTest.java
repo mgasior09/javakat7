@@ -1,8 +1,6 @@
 import com.klb.empservice.Employee;
 import com.klb.empservice.EmployeeManager;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -60,6 +58,17 @@ public class EmployeeManagerTest {
         assertTrue(result);   //zalicamy test gdy metoda ssertTrue otrzyma true
         Employee employee = employeeManager.getEmp(2L);
         assertEquals(3000.0, employee.getSalary(), 0);
+    }
+
+    @After
+    public void cleanAfterEachFunction() {
+        System.out.println("Ten kod wykona sie po kazdej metodzie adnotowanej @Test");
+    }
+
+    @AfterClass
+    public static void cleanAfterTests() {
+        //np. zamykanie polaczenia z baza danych, usuniecie pliku ktory powstal podczas testow itp
+        System.out.println("Ten kod wykona sie po zakonczeniu wszystkichmetod adnotowanych @Test");
     }
 }
 
