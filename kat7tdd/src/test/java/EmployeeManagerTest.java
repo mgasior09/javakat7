@@ -1,5 +1,7 @@
 import com.klb.empservice.Employee;
 import com.klb.empservice.EmployeeManager;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -15,14 +17,31 @@ import static org.junit.Assert.fail;
  */
 public class EmployeeManagerTest {
 
-    @Test   //informacja ze jest to metoda testujaca
-    public void testAddEmployee() {
+    private static EmployeeManager employeeManager = null;
+
+    // kod w metodzie adnotowanej w ten sposob uruchomi sie za kazdym razem przed
+    //kazda metoda testowa
+    @Before
+    public void setUp() {
         //dodajemy dwoch pracownikow
         //sprawdzamile jest pracownikow w managerze
-        EmployeeManager employeeManager = new EmployeeManager();
+        employeeManager = new EmployeeManager();
         employeeManager.addEmployee(1L, "Kasia", 2000000);
         employeeManager.addEmployee(2L, "Asia", 2000);
+    }
 
+    // kod w metodzie adnotowanej w ten sposob uruchomi sie raz przed wszystkimi metodami testowymi
+//        @BeforeClass
+//    public static void setUp() {
+//        //dodajemy dwoch pracownikow
+//        //sprawdzamile jest pracownikow w managerze
+//        employeeManager = new EmployeeManager();
+//        employeeManager.addEmployee(1L, "Kasia", 2000000);
+//        employeeManager.addEmployee(2L, "Asia", 2000);
+//    }
+
+    @Test   //informacja ze jest to metoda testujaca
+    public void testAddEmployee() {
         //zaliczamy ten przypadek testowy gdy liczba pracownikow == 2
         assertEquals(2, employeeManager.empsNumber());
 
@@ -37,15 +56,10 @@ public class EmployeeManagerTest {
     @Test
     public void testIncreaseSalary() {
      //   fail();  //to zostanie zawsze niezaliczone
-        EmployeeManager employeeManager = new EmployeeManager();
-        employeeManager.addEmployee(1L, "Kasia", 2000000);
-        employeeManager.addEmployee(2L, "Asia", 2000);
         boolean result = employeeManager.increaseSalary(2L, 1000);
         assertTrue(result);   //zalicamy test gdy metoda ssertTrue otrzyma true
         Employee employee = employeeManager.getEmp(2L);
         assertEquals(3000.0, employee.getSalary(), 0);
-
-
     }
 }
 
