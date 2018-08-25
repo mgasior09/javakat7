@@ -13,7 +13,6 @@ public class DBService {
     //np. jesli content = "abc xyz abc", word = "abc" to metoda powinna zwrocic 2
     public int countWord(String tableName, int RowId,  String columnName, String word) {
         String content = dbConnector.getContent(tableName, RowId, columnName);
-        //TODO: dokonczyc metode
 
         String [] parts = content.split(" ");
         int result = 0;

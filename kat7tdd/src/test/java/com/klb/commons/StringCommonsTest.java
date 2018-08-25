@@ -1,3 +1,5 @@
+package com.klb.commons;
+
 import com.klb.commons.StringCommons;
 import org.junit.Test;
 
